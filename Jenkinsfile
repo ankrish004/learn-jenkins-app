@@ -33,7 +33,7 @@ pipeline {
             steps{
                 sh '''
                   test -f build/index.html
-                  npm ci
+                  npm ci  // install all deps (including react-scripts)
                   npm test
                 '''
             }
