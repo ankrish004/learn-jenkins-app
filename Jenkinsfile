@@ -89,10 +89,10 @@ pipeline {
             }
         }   
 
-        stage('approval') {
+        stage('approve') {
             steps {
-                input message: 'rady to deploy', ok: 'proceed'
-               }
+                input message: 'ready to deploy', ok: 'sure!'
+
             }
         }
 
