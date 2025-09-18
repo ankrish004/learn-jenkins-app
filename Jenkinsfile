@@ -29,7 +29,7 @@ pipeline {
         
         stage('Runtest') {
             parallel {
-                stage('Test') {
+                stage('Unit tests') {
                     agent {
                         docker {
                             image 'node:18-alpine'
@@ -89,7 +89,15 @@ pipeline {
             }
         }   
 
-        stage('Deploy') {
+        stage('approval') {
+            steps {
+                timeout(time: 1, unit: 'HOUR') {
+                    input message: 'ready to Deploy ?', ok: 'yes. Iam sure'// some block
+               }
+            }
+        }
+
+        stage('Deploy production') {
             agent {
                 docker {
                     image 'node:18-alpine'
