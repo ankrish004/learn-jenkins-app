@@ -91,8 +91,7 @@ pipeline {
 
         stage('approval') {
             steps {
-                timeout(time: 1, unit: 'HOUR') {
-                    input message: 'ready to Deploy ?', ok: 'yes. Iam sure'// some block
+                input message: 'rady to deploy', ok: 'proceed'
                }
             }
         }
