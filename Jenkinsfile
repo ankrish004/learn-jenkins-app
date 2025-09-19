@@ -25,11 +25,11 @@ pipeline {
                     npm --version
                     npm ci
                     npm run build
-                    ls -la
+                    
                 '''
             }
         }
-        */
+        
         stage('Runtest') {
             parallel {
                 stage('Unit tests') {
@@ -72,7 +72,7 @@ pipeline {
                 } 
             }
         }
-    
+        */
 
         stage('Deploy staging') {
             agent {
