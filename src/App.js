@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { env } from 'process';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         </a>
       </header>
       <p>
-          Application version: 2
+          Application version: {process.env.REACT_APP_VERSION}
       </p>
     </div>
   );
