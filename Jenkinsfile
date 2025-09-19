@@ -3,7 +3,7 @@ pipeline {
     environment {
         NETLIFY_SITE_ID = 'e87d702c-94f7-47b6-8aaf-8b9e15fcb7fb'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
-        REACT_APP_VERSION = "1.0.$BUILD_ID" npm run build
+        REACT_APP_VERSION = "1.0.$BUILD_ID" 
         
 
     }
@@ -88,7 +88,8 @@ pipeline {
                     echo "Deploying to production. Site ID: $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=build --json > deploy-otput.json
-                    node_modules/.bin/node-jq -r '.deploy_url' deploy-otput.json           
+                    node_modules/.bin/node-jq -r '.deploy_url' deploy-otput.json  
+                    npm run build         
                 '''
                 script {
                     env.STAGING_URL = sh(script:"node_modules/.bin/node-jq -r '.deploy_url' deploy-otput.json", returnStdout: true).trim()
