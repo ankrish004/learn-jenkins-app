@@ -19,8 +19,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    npm install -g 
-                    npm --version
+                    npm install react-scripts --save
                     ls -la
                     node --version
                     npm --version
