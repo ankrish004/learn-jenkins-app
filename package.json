@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "serve": "^14.2.5",
     "web-vitals": "^2.1.4"
+    
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,7 +41,7 @@
   "devDependencies": {
     "@playwright/test": "^1.39.0",
     "@types/node": "^20.8.6",
-    "react-scripts": "^0.0.0"
+    "react-scripts": "^5.0.1"
   },
   "jest-junit": {
     "suiteName": "jest tests",
