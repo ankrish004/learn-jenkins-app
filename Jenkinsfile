@@ -19,7 +19,8 @@ pipeline {
             }
             steps {
                 sh '''
-                    npm install
+                    npm install -g npm@9.6.7
+                    npm --version
                     ls -la
                     node --version
                     npm --version
