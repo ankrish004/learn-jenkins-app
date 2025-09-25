@@ -9,7 +9,7 @@ pipeline {
 
     stages {        
         
-        /*
+        
         stage('Build') {
             agent {
                 docker {
@@ -72,7 +72,7 @@ pipeline {
                 } 
             }
         }
-        */
+        
         stage('Deploy staging') {
             agent {
                 docker {
