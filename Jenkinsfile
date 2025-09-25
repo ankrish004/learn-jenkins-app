@@ -19,6 +19,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    npm install
                     ls -la
                     node --version
                     npm --version
