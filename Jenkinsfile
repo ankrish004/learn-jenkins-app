@@ -12,7 +12,7 @@ pipeline {
         
         stage('docker') {
             steps {
-                sh ' docker build -t my-playwright .'
+                sh 'docker build -t my-playwright .'
             }
 
         }
