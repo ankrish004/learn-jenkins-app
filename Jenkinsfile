@@ -8,8 +8,15 @@ pipeline {
     }
 
     stages {        
+
         
-        
+        stage('docker') {
+            steps {
+                sh ' doecker bulid -t my-playwrite-image:latest . '
+            }
+
+        }
+
         stage('Build') {
             agent {
                 docker {
