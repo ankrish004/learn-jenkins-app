@@ -12,7 +12,7 @@ pipeline {
         
         stage('docker') {
             steps {
-                sh ' doecker bulid -t my-playwrite-image:latest . '
+                sh ' docker bulid -t my-playwrite-image:latest . '
             }
 
         }
