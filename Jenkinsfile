@@ -55,7 +55,7 @@ agent any
     }
     post {
         always {
-            junit 'test-results/*.xml'
+            junit 'Jtest-results/*.xml'
             
             
         }
