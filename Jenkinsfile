@@ -4,10 +4,12 @@ pipeline {
     stages {
 
         stage('Build') {
-            agent{
+            agent {
+                    {
                 docker 'node:18-alpine'
                 reuseNode true
                 }
+            }
             steps {
                 echo 'Building...'
                 sh'''    
