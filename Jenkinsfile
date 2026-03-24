@@ -34,7 +34,7 @@ environment {
             }
 
                     steps {
-                        echo 'Testing...'
+                        echo 'Testing against build'
                         sh'''
                             test -f build/index.html
                             npm test
