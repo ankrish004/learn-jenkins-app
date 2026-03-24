@@ -2,10 +2,21 @@ pipeline {
     agent any
 
     stages {
+        agent {
+            docker 'node:18-alpine'
+            reuseNode true
+        }
         stage('Build') {
             steps {
                 echo 'Building...'
-                // Add your build steps here
+                sh'''    
+                 ls -la
+                 node --version
+                 npm --version
+                 npm ci
+                 npm run build
+                 ls -la
+                '''
             }
         }
         stage('Test') {
@@ -14,12 +25,7 @@ pipeline {
                 // Add your test steps here
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                // Add your deploy steps here
-            }
-        }
+
     }
 
 }
