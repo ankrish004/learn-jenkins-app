@@ -3,6 +3,7 @@ agent any
 
 environment {
     NETLIFY_SITE_ID = 'e3589695-201e-4b3e-8170-3a6ac31a4255'
+    NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     
 }
 
