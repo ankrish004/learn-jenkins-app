@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-
+        /*
         stage('Build') {
 
             steps {
@@ -21,7 +21,7 @@ pipeline {
                  ls -la
                 '''
             }
-        }
+        }*/
         stage('Test') {
 
             steps {
