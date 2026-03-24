@@ -1,15 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18-alpine'
+            reuseNode true
+        }
+    }
 
     stages {
 
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
+
             steps {
                 echo 'Building...'
                 sh'''    
@@ -23,12 +23,7 @@ pipeline {
             }
         }
         stage('Test') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
+
             steps {
                 echo 'Testing...'
                 sh'''
@@ -38,6 +33,13 @@ pipeline {
             }
         }
 
+    }
+    post {
+        always {
+            junit 'test-results/*.xml'
+            
+            
+        }
     }
 
 }
