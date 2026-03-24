@@ -32,6 +32,22 @@ pipeline {
                 '''
             }
         }
+        stage('playright test') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.58.2-noble'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh'''
+                    npm install -g
+                    serve -s build 
+                    npx playwright test
+                ''' 
+
+            }
+        }
 
     }
     post {
