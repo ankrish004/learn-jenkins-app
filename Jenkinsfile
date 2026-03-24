@@ -66,7 +66,7 @@ agent any
             steps {
                 echo 'Deploying...'
                 sh'''
-                    npm install netlify-cli
+                    npm install netlify-cli@30.1.1
                     node_modules/.bin/netlify --version
                 '''
             }
