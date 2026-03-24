@@ -76,6 +76,7 @@ environment {
                     node_modules/.bin/netlify --version
                     echo "deploying to site: $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
+                    node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --prod --dir=build
                 '''
             }
         }
