@@ -68,7 +68,7 @@ environment {
             steps {
                 echo 'Deploying...'
                 sh'''
-                    npm install netlify-cli@30.1.1
+                    npm install netlify-cli@20.1.1
                     node_modules/.bin/netlify --version
                     echo 'deploy site ID: $NETLIFY_SITE_ID'
                 '''
