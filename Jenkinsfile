@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        agent {
+        agent{
             docker 'node:18-alpine'
             reuseNode true
         }
