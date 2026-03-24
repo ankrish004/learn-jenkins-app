@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    stages{
+        stage("with docker"){
+            agent{
+                docker{
+                    image "node:18-alpine"
+                    reuseNode true
+                }
+            }
+            steps{
+                echo "========executing the job========"
+                sh ''' 
+                    npm --version
+                    echo "with docker agent"
+                    ls -la
+                    touch container.txt
+                '''
+            }
+        }
+    }
+}
