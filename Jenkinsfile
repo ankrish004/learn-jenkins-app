@@ -56,6 +56,21 @@ agent any
 
             }
         }
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                echo 'Deploying...'
+                sh'''
+                    npm install netlify-cli -g
+                    netlify --version
+                '''
+            }
+        }
 
 
     }
