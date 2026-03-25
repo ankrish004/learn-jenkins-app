@@ -71,7 +71,7 @@ environment {
                 }
             }
             steps {
-                echo 'Deploying...'
+                echo 'staging...'
                 sh'''
                     npm install netlify-cli@20.1.1
                     
