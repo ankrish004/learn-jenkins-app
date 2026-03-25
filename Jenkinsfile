@@ -63,7 +63,7 @@ environment {
             }
         }
 
-        stage('Staging Deploy') {
+        stage('Staging') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -78,6 +78,7 @@ environment {
                     echo "deploying to site: $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID  --dir=build
+                    node_modules/.bin/netlify deploy --dir=build --json > deploy.json
                 '''
             }
         }
