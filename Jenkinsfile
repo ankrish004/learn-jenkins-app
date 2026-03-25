@@ -80,11 +80,19 @@ environment {
 
                     node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID  --dir=build
                     node_modules/.bin/netlify deploy --dir=build --json > deploy.json
-                    node_modules/.bin/node-jq -r '.deploy_url' deploy.json
+                    
                 '''
+                script {
+                env.STAGING_URL = sh(script: "node_modules/.bin/node-jq -r '.deploy_url' deploy.json", returnStdout: true).trim()
+
+               } 
             }
+
         }
 
+            environment {
+                CI_ENVIRONMENT_URL = "${env.STAGING_URL}" 
+            }
 
         stage('Deploy') {
             agent {
