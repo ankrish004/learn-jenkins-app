@@ -13,7 +13,8 @@ environment {
             steps {
                
                 sh'''
-                    docker build -t my-playwright-image:v1.0 .
+                    docker build -t ankrish/playwright-netlify:latest .
+                    docker push ankrish/playwright-netlify:latest
                 '''
             }
         }   
@@ -61,7 +62,7 @@ environment {
         stage('Staging') {
             agent {
                 docker {
-                    image 'my-playwright-image:v1.0'
+                    image 'ankrish/playwright-netlify:latest'
                     reuseNode true
                 }
             }
@@ -86,7 +87,7 @@ environment {
         stage('Deploy porduction') {
             agent {
                 docker {
-                    image 'my-playwright-image:v1.0'
+                    image 'ankrish/playwright-netlify:latest'
                     reuseNode true
                 }
             }
