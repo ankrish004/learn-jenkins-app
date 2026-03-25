@@ -74,11 +74,13 @@ environment {
                 echo 'staging...'
                 sh'''
                     npm install netlify-cli@20.1.1
+                    npm install node-jq
                     
-                    echo "deploying to site: $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
+
                     node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID  --dir=build
                     node_modules/.bin/netlify deploy --dir=build --json > deploy.json
+                    node_modules/.bin/node-jq -r '.deploy_url' deploy.json
                 '''
             }
         }
