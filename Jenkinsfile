@@ -22,7 +22,7 @@ environment {
                  ls -la
                 '''
             }
-        }*/
+        }
         stage ('Build and Test') {
             parallel {
                 stage('Test') {
@@ -62,7 +62,7 @@ environment {
 
             }
         }
-
+        */
         stage('Staging') {
             agent {
                 docker {
@@ -92,10 +92,10 @@ environment {
 
 
 
-        stage('Deploy') {
+        stage('Deploy porduction') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                     reuseNode true
                 }
             }
@@ -103,15 +103,17 @@ environment {
             environment {
             CI_ENVIRONMENT_URL = "${env.STAGING_URL}" 
             }
-            
+
             steps {
                 echo 'Deploying...'
                 sh'''
+                    node --version
                     npm install netlify-cli@20.1.1
                     node_modules/.bin/netlify --version
                     echo "deploying to site: $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --prod --dir=build
+                    npx playwright test --reporter=html
                 '''
             }
         }
