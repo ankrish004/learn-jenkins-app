@@ -63,32 +63,7 @@ environment {
             }
         }
         */
-        stage('Staging') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
-            steps {
-                echo 'staging...'
-                sh'''
-                    npm install netlify-cli@20.1.1
-                    npm install node-jq
-                    
-                    node_modules/.bin/netlify status
-                    node_modules/.bin/netlify deploy --dir=build --json > deploy.json
-                    
-                '''
-                script {
-                env.STAGING_URL = sh(script: "node_modules/.bin/node-jq -r '.deploy_url' deploy.json", returnStdout: true).trim()
-
-               } 
-            }
-
-        }
-
-
+ 
 
         stage('Deploy porduction') {
             agent {
@@ -110,7 +85,7 @@ environment {
                     node_modules/.bin/netlify --version
                     echo "deploying to site: $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
-                    node_modules/.bin/netlify deploy --dir=build --json > deploy.json
+                    node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --prod --dir=build
                     node_modules/.bin/serve -s build &
                     sleep 10
                     npx playwright test --reporter=html
