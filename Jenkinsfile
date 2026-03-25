@@ -69,8 +69,10 @@ environment {
                 echo 'staging...'
                 sh'''
 
-                    node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID  --dir=build
-                    node_modules/.bin/netlify deploy --dir=build --json > deploy.json
+                    
+                    
+                    netlify deploy --site $NETLIFY_SITE_ID --dir=build
+                    netlify deploy --dir=build --json > deploy.json
                     
                 '''
                 script {
@@ -99,10 +101,10 @@ environment {
                 echo 'Deploying...'
                 sh'''
                     
-                    node_modules/.bin/netlify --version
+                    netlify --version
                     echo "deploying to site: $NETLIFY_SITE_ID"
-                    node_modules/.bin/netlify status
-                    node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --prod --dir=build
+                    netlify status
+                    netlify deploy --site $NETLIFY_SITE_ID --prod --dir=build
                    
                 '''
             }
