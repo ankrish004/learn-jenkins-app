@@ -77,8 +77,6 @@ environment {
                     npm install node-jq
                     
                     node_modules/.bin/netlify status
-
-                    node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID  --dir=build
                     node_modules/.bin/netlify deploy --dir=build --json > deploy.json
                     
                 '''
@@ -112,7 +110,7 @@ environment {
                     node_modules/.bin/netlify --version
                     echo "deploying to site: $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
-                    node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --prod --dir=build
+                    node_modules/.bin/netlify deploy --dir=build --json > deploy.json
                     node_modules/.bin/serve -s build &
                     sleep 10
                     npx playwright test --reporter=html
