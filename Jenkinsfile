@@ -90,9 +90,7 @@ environment {
 
         }
 
-            environment {
-                CI_ENVIRONMENT_URL = "${env.STAGING_URL}" 
-            }
+
 
         stage('Deploy') {
             agent {
@@ -101,6 +99,11 @@ environment {
                     reuseNode true
                 }
             }
+            
+            environment {
+            CI_ENVIRONMENT_URL = "${env.STAGING_URL}" 
+            }
+            
             steps {
                 echo 'Deploying...'
                 sh'''
